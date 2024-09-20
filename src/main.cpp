@@ -9,7 +9,7 @@
 #include <string>
 
 int main(int argc, char *argv[]){
-    fmt::println("Hello, World!");
+  fmt::println("Hello, World!");
 
-    return EXIT_SUCCESS;
+  return EXIT_SUCCESS;
 }
