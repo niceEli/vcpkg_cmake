@@ -10,6 +10,7 @@
       "cacheVariables": {
         "CMAKE_C_COMPILER": "cl.exe",
         "CMAKE_CXX_COMPILER": "cl.exe",
+        "CMAKE_MAKE_PROGRAM": "ninja",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
       },
       "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
@@ -124,6 +125,40 @@
         "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
           "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}"
         }
+      }
+    },
+    {
+      "name": "emscripten-base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "installDir": "${sourceDir}/out/install/${presetName}",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "emcc",
+        "CMAKE_CXX_COMPILER": "em++",
+        "CMAKE_TOOLCHAIN_FILE": "$env{EMSCRIPTEN}/cmake/Modules/Platform/Emscripten.cmake"
+      },
+      "toolchainFile": "$env{EMSCRIPTEN}/cmake/Modules/Platform/Emscripten.cmake",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Emscripten"
+      }
+    },
+    {
+      "name": "emscripten-debug",
+      "displayName": "Emscripten Debug",
+      "inherits": "emscripten-base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "emscripten-release",
+      "displayName": "Emscripten Release",
+      "inherits": "emscripten-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
       }
     }
   ]
