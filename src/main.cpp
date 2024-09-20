@@ -7,8 +7,15 @@
 
 // end of std
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[])
+{
   fmt::println("Hello, World!");
+
+  fmt::print("Whats Your Name: ");
+  std::string input;
+  std::cin >> input;
+
+  fmt::println("Hello: {}", input);
 
   return EXIT_SUCCESS;
 }
