@@ -1,0 +1,12 @@
+{
+  "name": "vcpkg_cmake",
+  "version": "1.0.0",
+  "scripts": {
+    "build:linux-debug": "cmake -S . --preset x64-linux-debug",
+    "build:linux-release": "cmake -S . --preset x64-linux-release",
+    "build:windows-debug": "cmake -S . --preset x64-debug",
+    "build:windows-release": "cmake -S . --preset x64-release",
+    "build:darwin-debug": "cmake -S . --preset macos-debug",
+    "build:darwin-release": "cmake -S . --preset macos-release"
+  }
+}
