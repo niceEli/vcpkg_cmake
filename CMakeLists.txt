@@ -43,6 +43,7 @@ endif()
 # https://github.com/vblanco20-1/vulkan-guide/blob/all-chapters/CMakeLists.txt
 find_program(GLSL_VALIDATOR glslangValidator HINTS 
   ${Vulkan_GLSLANG_VALIDATOR_EXECUTABLE} 
+  /bin
   /usr/bin 
   /usr/local/bin 
   $ENV{VULKAN_SDK}/Bin/ 
@@ -56,6 +57,8 @@ file(GLOB_RECURSE GLSL_SOURCE_FILES
   CONFIGURE_DEPENDS
   "${PROJECT_SOURCE_DIR}/shaders/*.frag"
   "${PROJECT_SOURCE_DIR}/shaders/*.vert"
+  "${PROJECT_SOURCE_DIR}/shaders/*.comp"
+  "${PROJECT_SOURCE_DIR}/shaders/*.glsl"
 )
 
 message(STATUS "GLSL_SOURCE_FILES: ${GLSL_SOURCE_FILES}")

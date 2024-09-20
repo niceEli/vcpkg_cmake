@@ -1,0 +1,4 @@
+dependencies:
+  shaderc glfw.org glslang cmake gcc gdb
+env:
+  VERSION: 1.0.0
