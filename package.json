@@ -7,6 +7,7 @@
     "build:windows-debug": "cmake -S . --preset x64-debug",
     "build:windows-release": "cmake -S . --preset x64-release",
     "build:darwin-debug": "cmake -S . --preset macos-debug",
-    "build:darwin-release": "cmake -S . --preset macos-release"
+    "build:darwin-release": "cmake -S . --preset macos-release",
+    "test": "ctest -C ."
   }
 }
