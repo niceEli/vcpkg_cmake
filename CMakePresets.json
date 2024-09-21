@@ -4,7 +4,7 @@
     {
       "name": "windows-base",
       "hidden": true,
-      "generator": "Ninja Multi-Config",
+      "generator": "Ninja",
       "binaryDir": "${sourceDir}/out/build/${presetName}",
       "installDir": "${sourceDir}/out/install/${presetName}",
       "cacheVariables": {
@@ -130,7 +130,7 @@
     {
       "name": "emscripten-base",
       "hidden": true,
-      "generator": "Ninja Multi-Config",
+      "generator": "Ninja",
       "binaryDir": "${sourceDir}/out/build/${presetName}",
       "installDir": "${sourceDir}/out/install/${presetName}",
       "cacheVariables": {
@@ -138,7 +138,7 @@
         "CMAKE_CXX_COMPILER": "em++",
         "CMAKE_MAKE_PROGRAM": "ninja",
         "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "$env{EMSDK}/cmake/Modules/Platform/Emscripten.cmake",
-        "VCPKG_TARGET_ARCHITECTURE: "wasm32",
+        "VCPKG_TARGET_ARCHITECTURE": "wasm32",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
       },
       "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"

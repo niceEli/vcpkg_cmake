@@ -97,3 +97,46 @@ add_dependencies(${PROJECT_NAME} compile_shaders)
 message(STATUS "BUILT_SHA_FILES_DIR: ${BUILT_FILES_DIR}")
 
 ## end of build shaders
+
+# Define the source and destination directories
+set(PUBLIC_DIR "${CMAKE_SOURCE_DIR}/public")
+set(BUILT_RES_DIR "${CMAKE_BINARY_DIR}")  # Destination is the root of the binary directory
+
+# List all files to copy
+file(GLOB_RECURSE RESOURCE_FILES 
+    "${PUBLIC_DIR}/**"
+    VERBATIM
+)
+
+# Debug message to list all resource files found
+message(STATUS "Resource files to be copied:")
+foreach(file ${RESOURCE_FILES})
+    message(STATUS " - ${file}")
+endforeach()
+
+# Create a custom command to copy files at runtime
+add_custom_command(
+    TARGET ${PROJECT_NAME}
+    PRE_BUILD  # This runs before the project executable is built
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${BUILT_RES_DIR}"
+    COMMAND ${CMAKE_COMMAND} -E echo "Copying resources to binary directory..."
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${PUBLIC_DIR}" "${BUILT_RES_DIR}"
+    COMMENT "Copying resources to binary directory"
+)
+
+# Custom command to copy each resource file with debug messages
+foreach(file ${RESOURCE_FILES})
+    get_filename_component(file_name ${file} NAME)  # Get the base file name
+    add_custom_command(
+        TARGET ${PROJECT_NAME}
+        PRE_BUILD
+        COMMAND ${CMAKE_COMMAND} -E echo "Copying ${file} to ${BUILT_RES_DIR}/${file_name}"
+        COMMAND ${CMAKE_COMMAND} -E copy "${file}" "${BUILT_RES_DIR}/${file_name}"
+    )
+endforeach()
+
+# Create a custom target that depends on the resources
+add_custom_target(copy_resources ALL DEPENDS ${RESOURCE_FILES})
+
+# Ensure that the copy_resources target runs before your main project
+add_dependencies(copy_resources ${PROJECT_NAME})
