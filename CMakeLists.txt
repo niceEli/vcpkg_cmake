@@ -32,9 +32,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
 
 # Packages End
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
-endif()
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
 
 ############## Build SHADERS #######################
 
@@ -104,8 +102,8 @@ set(BUILT_RES_DIR "${CMAKE_BINARY_DIR}")  # Destination is the root of the binar
 
 # List all files to copy
 file(GLOB_RECURSE RESOURCE_FILES 
+    CONFIGURE_DEPENDS
     "${PUBLIC_DIR}/**"
-    VERBATIM
 )
 
 # Debug message to list all resource files found

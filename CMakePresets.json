@@ -139,9 +139,12 @@
         "CMAKE_CXX_COMPILER": "em++",
         "CMAKE_MAKE_PROGRAM": "ninja",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "$env{EMSDK}/cmake/Modules/Platform/Emscripten.cmake"
+        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "$env{EMSDK}/cmake/Modules/Platform/Emscripten.cmake",
+        "CMAKE_EXECUTABLE_SUFFIX": ".html",
+        "CMAKE_C_FLAGS": "-s USE_SDL=2 -s USE_WEBGL2=1 -gsource-map",
+        "CMAKE_CXX_FLAGS": "-s USE_SDL=2 -s USE_WEBGL2=1 -gsource-map"
       }
-    },    
+    },
     {
       "name": "emscripten-release",
       "displayName": "Emscripten Release",

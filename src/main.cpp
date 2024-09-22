@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
   fmt::println("Hello, World!");
 
-  fmt::print("Whats Your Name: ");
+  fmt::println("Whats Your Name: ");
   std::string input;
   std::cin >> input;
 
